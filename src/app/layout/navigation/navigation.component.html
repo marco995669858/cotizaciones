@@ -1,10 +1,14 @@
 <div class="navigation">
-  <h3>Navegación</h3>
+  <h3>Menu de navegación Osinergmin</h3>
   <div class="navigation-option">
-    <button [ngClass]="inicioActiveOption ? 'selected' : 'option'" (click)="onNabvarOptionSelected('inicio')">
+    <button [ngClass]="inicioActiveOption ? 'selected' : 'option'" (click)="onNabvarOptionSelected('inicio')" mat-button [matMenuTriggerFor]="menu">
       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-      Inicio
+      Principal
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Inicio</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
   </div>
   <div class="navigation-option" (click)="onNabvarOptionSelected('estructura')">
     <button [ngClass]="estructuraActiveOption ? 'selected' : 'option'">

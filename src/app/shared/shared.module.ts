@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxExtendedPdfViewerModule  } from 'ngx-extended-pdf-viewer';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatMenuModule} from '@angular/material/menu';
 import * as fromComponents from './components';
 
 @NgModule({
@@ -28,6 +29,7 @@ import * as fromComponents from './components';
     MatProgressBarModule,
     NgxExtendedPdfViewerModule,
     DragDropModule,
+    MatMenuModule
   ],
   declarations: [...fromComponents.components],
   exports: [
@@ -44,6 +46,7 @@ import * as fromComponents from './components';
     MatProgressBarModule,
     NgxExtendedPdfViewerModule,
     DragDropModule,
+    MatMenuModule,
     ...fromComponents.components
   ]
 })
