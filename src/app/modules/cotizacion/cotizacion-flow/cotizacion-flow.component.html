@@ -1,0 +1,157 @@
+<div class="flow-container">
+    <div class="cont-header">
+        <div class="flow-header-money">
+            <p> {{monto_1 | currency: 'S/'}} </p>
+            <p> {{monto_2 | currency: 'S/'}} </p>
+            <p> {{monto_3 | currency: 'S/'}} </p>
+            <p> {{monto_4 | currency: 'S/'}} </p>
+            <p> {{monto_5 | currency: 'S/'}} </p>
+        </div>
+        <div class="flow-header">
+            <p>Prospección</p>
+            <p>Cotización</p>
+            <p>Enviado</p>
+            <p>Venta</p>
+            <p>Pérdida</p>
+        </div>
+    </div>
+    <div class="flow-body">
+        <div class="divider"></div>
+        <div
+            cdkDropList
+            [cdkDropListData]="etapa_1"
+            class="etapa">
+            <div class="cotizacion-box" *ngFor="let item of etapa_1" cdkDrag (click)="onClickCotizacion()">
+                <p class="titulo">{{item.cliente}}</p>
+                <div class="info-cont">
+                    <div class="info-group">
+                        <p class="label-info">Usuario:</p>
+                        <p class="info">{{item.fkUsuario.nombre.split(" ")[0]}}</p>
+                    </div>
+                    <div class="info-group">
+                        <p class="label-info">Monto sin IGV:</p>
+                        <p class="info" *ngIf="item.moneda == 'sol'">{{item.precioNoIgv | currency: 'S/'}}</p>
+                        <p class="info" *ngIf="item.moneda == 'dolar'">{{item.precioNoIgv | currency: '$'}}</p>
+                    </div>
+                    <div class="info-group">
+                        <p class="label-info">Fecha:</p>
+                        <p class="info">{{item.fechaCreacion.split(" ")[1] | date:'dd-MM-yyyy'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div
+            cdkDropList
+            #lista2="cdkDropList"
+            id="etapa_2"
+            [cdkDropListData]="etapa_2"
+            [cdkDropListConnectedTo]="[lista3, lista4, lista5]"
+            class="etapa"
+            (cdkDropListDropped)="onDrop($event)">
+            <div class="cotizacion-box" *ngFor="let item of etapa_2" cdkDrag [cdkDragData]="[item, 2]">
+                <p class="titulo">{{item.fkEstructura.cliente}}</p>
+                <div class="info-cont">
+                    <div class="info-group">
+                        <p class="label-info">Usuario:</p>
+                        <p class="info">{{item.fkEstructura.fkUsuario.nombre.split(" ")[0]}}</p>
+                    </div>
+                    <div class="info-group">
+                        <p class="label-info">Monto sin IGV:</p>
+                        <p class="info" *ngIf="item.fkEstructura.moneda == 'sol'">{{item.fkEstructura.precioNoIgv | currency: 'S/'}}</p>
+                        <p class="info" *ngIf="item.fkEstructura.moneda == 'dolar'">{{item.fkEstructura.precioNoIgv | currency: '$'}}</p>
+                    </div>
+                    <div class="info-group">
+                        <p class="label-info">Fecha:</p>
+                        <p class="info">{{item.fechaCreacion}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div
+            cdkDropList
+            #lista3="cdkDropList"
+            id="etapa_3"
+            [cdkDropListData]="etapa_3"
+            [cdkDropListConnectedTo]="[lista2, lista4, lista5]"
+            class="etapa"
+            (cdkDropListDropped)="onDrop($event)">
+            <div class="cotizacion-box" *ngFor="let item of etapa_3" cdkDrag [cdkDragData]="[item, 3]">
+                <p class="titulo">{{item.fkEstructura.cliente}}</p>
+                <div class="info-cont">
+                  <div class="info-group">
+                      <p class="label-info">Usuario:</p>
+                      <p class="info">{{item.fkEstructura.fkUsuario.nombre.split(" ")[0]}}</p>
+                  </div>
+                  <div class="info-group">
+                      <p class="label-info">Monto sin IGV:</p>
+                      <p class="info" *ngIf="item.fkEstructura.moneda == 'sol'">{{item.fkEstructura.precioNoIgv | currency: 'S/'}}</p>
+                      <p class="info" *ngIf="item.fkEstructura.moneda == 'dolar'">{{item.fkEstructura.precioNoIgv | currency: '$'}}</p>
+                  </div>
+                  <div class="info-group">
+                      <p class="label-info">Fecha:</p>
+                      <p class="info">{{item.fechaCreacion}}</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div
+            cdkDropList
+            #lista4="cdkDropList"
+            id="etapa_4"
+            [cdkDropListData]="etapa_4"
+            [cdkDropListConnectedTo]="[lista2, lista3, lista5]"
+            class="etapa"
+            (cdkDropListDropped)="onDrop($event)">
+            <div class="cotizacion-box" *ngFor="let item of etapa_4" cdkDrag [cdkDragData]="[item, 4]">
+                <p class="titulo">{{item.fkEstructura.cliente}}</p>
+                <div class="info-cont">
+                <div class="info-group">
+                    <p class="label-info">Usuario:</p>
+                    <p class="info">{{item.fkEstructura.fkUsuario.nombre.split(" ")[0]}}</p>
+                </div>
+                <div class="info-group">
+                    <p class="label-info">Monto sin IGV:</p>
+                    <p class="info" *ngIf="item.fkEstructura.moneda == 'sol'">{{item.fkEstructura.precioNoIgv | currency: 'S/'}}</p>
+                    <p class="info" *ngIf="item.fkEstructura.moneda == 'dolar'">{{item.fkEstructura.precioNoIgv | currency: '$'}}</p>
+                </div>
+                <div class="info-group">
+                    <p class="label-info">Fecha:</p>
+                    <p class="info">{{item.fechaCreacion}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div
+            cdkDropList
+            #lista5="cdkDropList"
+            id="etapa_5"
+            [cdkDropListData]="etapa_5"
+            [cdkDropListConnectedTo]="[lista2, lista3, lista4]"
+            class="etapa"
+            (cdkDropListDropped)="onDrop($event)">
+            <div class="cotizacion-box" *ngFor="let item of etapa_5" cdkDrag [cdkDragData]="[item, 5]">
+                <p class="titulo">{{item.fkEstructura.cliente}}</p>
+                <div class="info-cont">
+                  <div class="info-group">
+                      <p class="label-info">Usuario:</p>
+                      <p class="info">{{item.fkEstructura.fkUsuario.nombre}}</p>
+                  </div>
+                  <div class="info-group">
+                      <p class="label-info">Monto sin IGV:</p>
+                      <p class="info" *ngIf="item.fkEstructura.moneda == 'sol'">{{item.fkEstructura.precioNoIgv | currency: 'S/'}}</p>
+                      <p class="info" *ngIf="item.fkEstructura.moneda == 'dolar'">{{item.fkEstructura.precioNoIgv | currency: '$'}}</p>
+                  </div>
+                  <div class="info-group">
+                      <p class="label-info">Fecha:</p>
+                      <p class="info">{{item.fechaCreacion}}</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </div>
+</div>

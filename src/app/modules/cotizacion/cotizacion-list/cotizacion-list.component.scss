@@ -1,0 +1,105 @@
+table {
+    width: 100%;
+  .btn{
+    border: none;
+    outline: none;
+    width: 90px;
+    height: 30px;
+    margin: auto 0 0 auto;
+    cursor: pointer;
+    background-color: transparent;
+
+    mat-icon{
+      color: var(--blue-color);
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+  .mat-form-field {
+    font-size: 14px;
+     width: 100%;
+  }
+  td, th {
+    width: auto;
+    text-align: center;
+  }
+  .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+  }
+  .container-table{
+    width: calc(100% - 5vw);
+    height: auto;
+    margin: 2.5vw auto;
+    background-color: var(--white-color);
+    padding: 20px;
+    box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+  }
+  .mat-form-field.mat-focused {
+    .mat-form-field-label {
+        color: var(--orange-color);
+    }
+    .mat-form-field-ripple {
+        background-color: var(--orange-color);
+        height: 2px;
+    }
+  }
+  .table-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    h3{
+      color: var(--black-color);
+      line-height: 30px;
+    }
+    a{
+      text-decoration: none;
+
+      button{
+        border: none;
+        outline: none;
+        background-color: var(--orange-color);
+        color: var(--white-color);
+        height: 30px;
+        width: 140px;
+        cursor: pointer;
+      }
+    }
+  }
+
+.pdf-container{
+  position: absolute;
+  background-color: var(--white-color);
+  padding: 20px;
+  top: 50%;
+  box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+  left: 50%;
+  z-index: 500;
+  height: 85vh;
+  width: 80vw;
+  transform: translate(-50%, -50%);
+
+  .btn-close{
+    border: none;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    cursor: pointer;
+    outline: none;
+    height: 30px;
+    width: 120px;
+    bottom: 40px;
+    right: 60px;
+    position: absolute;
+    z-index: 600;
+  }
+}
+::ng-deep ngx-extended-pdf-viewer .pdfViewer.singlePageView .page{
+  margin: auto !important;
+}
+::ng-deep ngx-extended-pdf-viewer .grab-to-pan-grab :not(input):not(textarea):not(button):not(select):not(:link){
+
+  display: flex;
+}

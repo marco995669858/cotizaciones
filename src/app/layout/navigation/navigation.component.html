@@ -1,0 +1,42 @@
+<div class="navigation">
+  <h3>Navegación</h3>
+  <div class="navigation-option">
+    <button [ngClass]="inicioActiveOption ? 'selected' : 'option'" (click)="onNabvarOptionSelected('inicio')">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      Inicio
+    </button>
+  </div>
+  <div class="navigation-option" (click)="onNabvarOptionSelected('estructura')">
+    <button [ngClass]="estructuraActiveOption ? 'selected' : 'option'">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">monetization_on</mat-icon>
+      Estructura Costos
+    </button>
+  </div>
+  <div class="navigation-option" (click)="onNabvarOptionSelected('cotizacion')">
+    <button [ngClass]="cotizacionActiveOption ? 'selected' : 'option'">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">description</mat-icon>
+      Cotizaciones
+    </button>
+  </div>
+  <div class="navigation-option" (click)="onNabvarOptionSelected('estadistica')">
+    <button [ngClass]="estadisticasActiveOption ? 'selected' : 'option'">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">poll</mat-icon>
+      Estadísticas
+    </button>
+  </div>
+  <div class="navigation-option" (click)="onNabvarOptionSelected('administracion')" *ngIf="usuarioSession.fkRol.nombre == 'Administrador'">
+    <button [ngClass]="administracionActiveOption ? 'selected' : 'option'">
+      <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
+      Administración
+    </button>
+  </div>
+
+  <div class="navigation-user">
+    	<mat-icon>account_box</mat-icon>
+    <div class="info-cont">
+      <p> {{nombreUsuario}} </p>
+      <span> {{usuarioSession.cargo}} </span>
+    </div>
+  </div>
+</div>
+

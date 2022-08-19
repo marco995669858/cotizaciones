@@ -1,0 +1,49 @@
+<div class="container-table">
+    <div class="table-header">
+      <h3>Cotizaciones</h3>
+      <a (click)="onNuevaCotizacion()"><button>Nueva cotización</button></a>
+    </div>
+    <mat-form-field appearance="standard" class="filtro">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="filtrarTabla($event)" #input>
+    </mat-form-field>
+
+        <div class="mat-elevation-z0">
+          <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="cliente">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+              <td mat-cell *matCellDef="let row"> {{row.fkEstructura.cliente}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaCreacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creación </th>
+              <td mat-cell *matCellDef="let row"> {{row.fechaCreacion}} </td>
+            </ng-container>
+            <ng-container matColumnDef="idUsuario">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+              <td mat-cell *matCellDef="let row"> {{row.fkEstructura.fkUsuario.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opciones">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Ver </th>
+              <td mat-cell *matCellDef="let row"> <button (click)="onOpenPdfView(row.nombre)" class="btn"><mat-icon>open_in_new</mat-icon></button>  </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No se encontraron resultados para "{{input.value}}"</td>
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+
+</div>
+<div class="pdf-container" *ngIf="modalPdf">
+    <ngx-extended-pdf-viewer [src]="pdfSrc"   [useBrowserLocale]="false" [textLayer]="true" [showHandToolButton]="true" [zoom]="80"  [showOpenFileButton]="false"></ngx-extended-pdf-viewer>
+   <button class="btn-close" (click)="onClosePdfView()">Cerrar</button>
+</div>

@@ -1,0 +1,33 @@
+<div class="revisiones-cont">
+  <mat-icon (click)="onCerrarModal()">cancel</mat-icon>
+  <img [src]="rutaImagen" alt="">
+  <div class="revision" *ngFor="let r of revisiones; let i = index">
+    <div class="divider" *ngIf="i%2 == 0 || i == 0"></div>
+    <div class="revision-info">
+      <div class="cont">
+        <div class="grupo">
+          <p>Revisor:</p>
+          <span>{{r.fkEstructuraUsuario.fkRevisor.fkUsuario.nombre}}</span>
+        </div>
+        <div class="grupo">
+          <p>Estructura:</p>
+          <span>Estructura_N°132</span>
+        </div>
+        <div class="grupo">
+          <p>Observación:</p>
+          <span>{{r.observacion}}</span>
+        </div>
+      </div>
+      <div class="cont">
+        <div class="grupo">
+          <p>Fecha:</p>
+          <span>{{r.fecha}}</span>
+        </div>
+        <div class="grupo">
+          <p>Estado:</p>
+          <span [ngClass]="r.estado == 'Aprobado' ? 'aprobado' : 'observado'">{{r.estado}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

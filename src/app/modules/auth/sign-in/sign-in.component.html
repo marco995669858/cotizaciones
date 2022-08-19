@@ -1,0 +1,30 @@
+<div class="login-container">
+
+  <!--<div class="loader" *ngIf="loaderService.isLoading | async">-->
+    <!--<mat-progress-bar style="height: 3px;" mode="indeterminate"></mat-progress-bar>
+  </div>-->
+  <div class="logo-container">
+      <img src="assets/img/Saeta-logo.png" alt="Saeta-logo">
+  </div>
+  <div class="login-card card-shadow">
+      <form (submit)="onLogin()">
+          <div class="input-group">
+              <label for="email">Usuario</label>
+              <input type="text">
+          </div>
+          <div class="input-group">
+              <label for="password">Contraseña</label>
+              <input type="password">
+          </div>
+          <div class="input-group">
+              <button >INGRESAR</button>
+          </div>
+      </form>
+  </div>
+ <!-- <div class="snackbar-cont" *ngIf="showSnackBar">
+    <span>{{snackbar.mensaje}}</span>
+    <button class="ok-btn" *ngIf="snackbar.tipo==1 && snackbar.button" (click)="onCloseSnackbar()">Aceptar</button>
+    <button class="error-btn" *ngIf="snackbar.tipo==2 && snackbar.button" (click)="onCloseSnackbar()">Aceptar</button>
+  </div>-->
+</div>
+

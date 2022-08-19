@@ -1,0 +1,132 @@
+.login-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.logo-container{
+    margin: auto auto 20px auto;
+    width: 300px;
+    height: auto;
+    transform: translateY(-67px);
+    img{
+        width: 300px;
+        height: auto;
+    }
+}
+.login-card{
+    margin: 20px auto auto auto;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 220px;
+    background-color: var(--white-color);
+    color: var(--blue);
+    transform: translateY(-67px);
+    padding-bottom: 10px;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 100%;
+
+        .input-group{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            margin: auto;
+
+            label{
+                color: var(--black-color);
+                font-size: 12px;
+            }
+            input{
+                border: none;
+                border-bottom: 1.5px solid rgba(33, 33, 33, 0.2);
+                background-color: var(--gray-color);
+                outline: none;
+                padding: 0 10px;
+                width: 200px;
+                height: 30px;
+            }
+            input:focus{
+                border-bottom: 1.5px solid rgba(0, 83, 154, 1);
+
+            }
+            button{
+                border: none;
+                outline: none;
+                box-shadow: none;
+                background-color: var(--orange-color);
+                color: var(--white-color);
+                height: 30px;
+                width: 200px;
+                font-size: 14px;
+                font-weight: 600;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.card-shadow{
+    box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+}
+
+.loader{
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: 300;
+}
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: var(--white-color);
+}
+::ng-deep .mat-progress-bar-buffer {
+  background: var(--orange-color);
+}
+
+.snackbar-cont{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 48px;
+  min-width: 344px;
+  max-width: 33vw;
+  padding: 14px 16px;
+  background-color: var(--black-color);
+  color: var(--gray-secondary-color);
+  box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+  z-index: 300;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+
+  span{
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .ok-btn{
+    width: 22%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--green-color);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .error-btn{
+    width: 22%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--red-color);
+    font-size: 15px;
+    font-weight: 600;
+    cursor:  pointer;
+  }
+}

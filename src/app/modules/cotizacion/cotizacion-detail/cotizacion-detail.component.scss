@@ -1,0 +1,172 @@
+.form-container{
+  width: 60%;
+  height: auto;
+  margin: 50px auto;
+  background-color: var(--white-color);
+  padding: 20px;
+  box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+}
+.form-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  h3{
+      line-height: 30px;
+  }
+}
+.buttons-header{
+  display: flex;
+}
+.editarBtn{
+  border: 1px solid var(--orange-color);
+  outline: none;
+  background-color: var(--white-color);
+  color: var(--orange-color);
+  height: 30px;
+  width: 90px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.cancelarBtn{
+  border: 1px solid var(--blue-color);
+  outline: none;
+  background-color: var(--white-color);
+  color: var(--blue-color);
+  height: 30px;
+  width: 90px;
+  margin-right: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.guardarBtn{
+  border: none;
+  outline: none;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  height: 30px;
+  width: 90px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.form-cont{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  form{
+      width: 100%;
+
+      .input-group{
+          display: flex;
+          flex-direction: column;
+          margin: 20px;
+          label{
+              color: var(--black-color);
+              font-size: 12px;
+          }
+          input{
+              width: 100%;
+              border: none;
+              border-bottom: 1.5px solid rgba(33, 33, 33, 0.2);
+              background-color: var(--gray-color);
+              outline: none;
+              height: 30px;
+              padding: 0 10px;
+          }
+          input:focus{
+              border-bottom: 1.5px solid rgba(0, 83, 154, 1);
+
+          }
+          select{
+              width: 100%;
+              border: none;
+              border-bottom: 1.5px solid rgba(33, 33, 33, 0.2);
+              background-color: var(--gray-color);
+              outline: none;
+              height: 30px;
+              cursor: pointer;
+              padding: 10px;
+          }
+          select:focus{
+              border-bottom: 1.5px solid rgba(0, 83, 154, 1);
+          }
+          textarea{
+            width: 100%;
+            border: none;
+            border-bottom: 1.5px solid rgba(33, 33, 33, 0.2);
+            background-color: var(--gray-color);
+            outline: none;
+            height: 100px;
+            resize: none;
+            font-size: 13px;
+            padding: 10px;
+          }
+          textarea:focus{
+              border-bottom: 1.5px solid rgba(0, 83, 154, 1);
+          }
+          .row-flex{
+              display: flex;
+              justify-content: flex-end;
+          }
+      }
+  }
+}
+
+.divider{
+  height: 1px;
+  background-color: rgba(33, 33, 33, 0.2);
+  margin: 40px 20px;
+}
+.row-inputArchivo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 20px;
+
+  .input-group-archivo{
+    width: 100%;
+    margin: 0 20px 0 0;
+    display: flex;
+    flex-direction: column;
+
+    label{
+      color: var(--black-color);
+      font-size: 12px;
+    }
+    input{
+        width: 100%;
+        border: none;
+        border-bottom: 1.5px solid rgba(33, 33, 33, 0.2);
+        background-color: var(--gray-color);
+        outline: none;
+        height: 30px;
+        padding: 0 10px;
+    }
+    input:focus{
+        border-bottom: 1.5px solid rgba(0, 83, 154, 1);
+
+    }
+  }
+
+  .file-input{
+    border: none;
+    outline: none;
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    height: 30px;
+    width: 140px;
+    cursor: pointer;
+    margin: auto 0 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+}
+
+input[type="file"] {
+  display: none;
+}

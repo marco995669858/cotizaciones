@@ -1,0 +1,39 @@
+<div class="form-container">
+  <div class="form-header">
+      <h3> {{title}} </h3>
+      <div class="buttons-header" *ngIf="idCotizacion">
+          <a (click)="onEditarCotizacion()"><button class="editarBtn">Editar</button></a>
+          <a (click)="onEliminarCotizacion()"><button class="editarBtn">Eliminar</button></a>
+      </div>
+  </div>
+  <div class="form-cont">
+      <form [formGroup]="cotizacionForm" (submit)="onSave()">
+          <div class="input-group">
+              <label for="email">Nombre</label>
+              <input type="text" id="email" formControlName="nombre" autocomplete="off">
+          </div>
+          <div class="input-group">
+              <label for="email">Descripcion</label>
+              <textarea type="text" id="email" formControlName="descripcion" autocomplete="off"></textarea>
+          </div>
+          <div class="divider"></div>
+          <div class="row-inputArchivo">
+            <div class="input-group-archivo">
+              <label for="email">Archivo de la cotización</label>
+              <input type="text" id="email">
+            </div>
+            <label class="file-input">
+              <input type="file">
+              Seleccionar
+            </label>
+          </div>
+          <div class="divider"></div>
+          <div class="input-group">
+              <div class="row-flex">
+                  <button class="cancelarBtn" (click)="onCancelar()">Cancelar</button>
+                  <button class="guardarBtn" type="submit" [disabled]="cotizacionForm.invalid">Guardar</button>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+   width: 100%;
+}
+td, th {
+  width: auto;
+  text-align: center;
+}
+.mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+.container-table{
+  height: auto;
+  margin: 2.5vw 2.5vw 50px 2.5vw;
+  background-color: var(--white-color);
+  padding: 20px;
+  box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+}
+.mat-form-field.mat-focused {
+  .mat-form-field-label {
+      color: var(--orange-color);
+  }
+  .mat-form-field-ripple {
+      background-color: var(--orange-color);
+      height: 2px;
+  }
+}
+.table-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  h3{
+    color: var(--black-color);
+    line-height: 30px;
+  }
+  a{
+    text-decoration: none;
+
+    button{
+      border: none;
+      outline: none;
+      background-color: var(--orange-color);
+      color: var(--white-color);
+      height: 30px;
+      width: 140px;
+      cursor: pointer;
+    }
+  }
+}
+.btn{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--blue-color);
+  margin: auto;
+  cursor: pointer;
+
+  mat-icon{
+    margin: auto;
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+  }
+}
+.estado-cont{
+  display: flex;
+  line-height: 30px;
+
+  p{
+    margin: auto auto auto 5px;
+  }
+}
+.estado{
+  height: auto;
+  width: 250px;
+  margin: auto;
+}
+.creado{
+  background-color: var(--gray-status-color);
+}
+.revision{
+  background-color: var(--blue-status-color);
+}
+.aprobado{
+  background-color: var(--green-status-color);
+}
+.observado{
+  background-color: var(--red-status-color);
+}
+::ng-deep .mat-sort-header-content{
+  margin: auto;
+}
+

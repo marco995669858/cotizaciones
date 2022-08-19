@@ -1,0 +1,218 @@
+<div class="general-cont">
+  <div class="form-container">
+    <div class="form-header">
+        <h3> {{title}} </h3>
+        <div class="buttons-header">
+            <a *ngIf="opciones && estructuraActual.id != 0"(click)="onEditarEstructura()"><button class="editarBtn">Editar</button></a>
+            <a *ngIf="opciones && estructuraActual.id != 0" (click)="onEliminarEstructura()"><button class="editarBtn">Eliminar</button></a>
+            <a *ngIf="turno" (click)="onRevisarEstructura()"><button class="revisarBtn">Revisar</button></a>
+        </div>
+    </div>
+    <div class="form-cont">
+        <form [formGroup]="estructuraForm">
+          <!-- Nombre -->
+          <div class="input-group">
+              <label for="email">Nombre</label>
+              <input type="text" id="email" formControlName="nombre" autocomplete="off">
+          </div>
+          <!-- Descripcion -->
+          <div class="input-group">
+              <label for="email">Descripcion</label>
+              <textarea type="text" id="email" formControlName="descripcion" autocomplete="off"></textarea>
+          </div>
+          <!-- Cliente -->
+          <div class="input-group">
+            <label for="email">Cliente</label>
+            <input type="text" id="email" formControlName="cliente" autocomplete="off">
+          </div>
+          <div class="input-group">
+            <label for="email">RUC del cliente</label>
+            <input type="text" id="email" formControlName="ruc_cliente" autocomplete="off">
+          </div>
+          <!-- Tipo de cambio e IGV -->
+          <div class="row">
+            <div class="input-group">
+              <label for="email">Tipo de cambio</label>
+              <input type="text" id="email" formControlName="tipoCambio" autocomplete="off">
+            </div>
+            <div class="input-group">
+              <label for="email">IGV.(%)</label>
+              <input type="text" id="email" formControlName="igv" autocomplete="off">
+            </div>
+          </div>
+          <!-- Moneda -->
+          <div class="input-group">
+                <label for="email">Moneda</label>
+                <select formControlName="moneda">
+                    <option value="dolar"> Dólares </option>
+                    <option value="sol"> Soles </option>
+                </select>
+            </div>
+          <!-- División de sección -->
+          <div class="divider"></div>
+          <span class="seccion">Costos</span>
+          <!-- Items -->
+          <div class="row-inputItem" *ngFor="let item of items; let i = index; trackBy: customTB">
+            <div class="input-group-item">
+              <label for="email">Nombre</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.nombre" name="item{{i}}" value="{{item.nombre}}" [disabled]="!inputEnabled">
+            </div>
+            <div class="input-group-item">
+              <label for="email">Cantidad</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.cantidad" name="item{{i}}" value="{{item.cantidad}}" [disabled]="!inputEnabled">
+            </div>
+            <div class="input-group-item">
+              <label for="email">Precio Unitario</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.precio" name="item{{i}}" value="{{item.precio}}" [disabled]="!inputEnabled">
+            </div>
+
+            <button (click)="onAgregarItem()" *ngIf="i==0" [ngClass]="editar || estructuraActual.id == 0 ? 'addBtn' : 'addBtn-disabled'">Añadir</button>
+            <button class="removeBtn" (click)="onRemoveItem(i)" *ngIf="i!=0"><mat-icon>delete_forever</mat-icon></button>
+          </div>
+          <!-- División de sección -->
+          <div class="divider"></div>
+          <span class="seccion">Gasto General</span>
+          <!-- Gastos -->
+          <div class="row-inputGastoCosto" *ngFor="let gasto of gastos; let i = index; trackBy: customTB">
+            <div class="input-group-gastoCosto">
+              <label for="email">Nombre</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="gasto.nombre" name="gasto{{i}}" value="{{gasto.nombre}}" [disabled]="!inputEnabled">
+            </div>
+            <div class="input-group-gastoCosto">
+              <label for="email">Porcentaje</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="gasto.porcentaje" name="gasto{{i}}" value="{{gasto.porcentaje}}" [disabled]="!inputEnabled">
+            </div>
+            <button (click)="onAgregarGasto()" *ngIf="i==0" [ngClass]="editar || estructuraActual.id == 0 ? 'addBtn' : 'addBtn-disabled'">Añadir</button>
+            <button class="removeBtn" *ngIf="i!=0" (click)="onRemoveGasto(i)"><mat-icon>delete_forever</mat-icon></button>
+          </div>
+          <!-- División de sección -->
+          <div class="divider"></div>
+          <span class="seccion">Valores añadidos</span>
+          <!-- Costos -->
+          <div class="row-inputGastoCosto" *ngFor="let costo of costos; let i = index; trackBy: customTB">
+            <div class="input-group-gastoCosto">
+              <label for="email">Nombre</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="costo.nombre" name="costo{{i}}" value="{{costo.nombre}}" [disabled]="!inputEnabled">
+            </div>
+            <div class="input-group-gastoCosto">
+              <label for="email">Porcentaje</label>
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="costo.porcentaje" name="costo{{i}}" value="{{costo.porcentaje}}" [disabled]="!inputEnabled">
+            </div>
+            <button (click)="onAgregarCosto()" *ngIf="i==0" [ngClass]="editar || estructuraActual.id == 0 ? 'addBtn' : 'addBtn-disabled'">Añadir</button>
+            <button class="removeBtn" *ngIf="i!=0" (click)="onRemoveCosto(i)"><mat-icon>delete_forever</mat-icon></button>
+          </div>
+          <!-- División de sección -->
+          <div class="divider"></div>
+          <span class="seccion">Condiciones y Forma de Pago</span>
+          <!-- Forma de pago -->
+          <div class="input-group">
+              <label for="email">Forma de pago</label>
+              <input type="text" id="email" formControlName="forma_pago" autocomplete="off">
+          </div>
+          <!-- Plazo de implementacion -->
+          <div class="input-group">
+              <label for="email">Plazo de implementación</label>
+              <input type="text" id="email" formControlName="plazo_implementacion" autocomplete="off">
+          </div>
+          <!-- Validez de cotizacion -->
+          <div class="input-group">
+              <label for="email">Validez de cotización</label>
+              <input type="text" id="email" formControlName="validez_cotizacion" autocomplete="off">
+          </div>
+          <!-- Footer botones -->
+          <div class="input-group">
+            <div class="row-flex">
+              <button class="cancelarBtn" (click)="onCancelar()">Regresar</button>
+              <button class="guardarBtn" type="submit"  (click)="onSave()" [ngClass]="estructuraActual.id==0 || editar ? 'guardarBtn' : 'guardarBtn-disabled'">Guardar</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+  <div class="resumen-container">
+    <div class="resumen-header">
+      <h3>Resumen</h3>
+    </div>
+    <div class="resumen-body-estructura">
+      <div class="row">
+        <p class="p1">Costo sub total:</p>
+        <p class="m1">{{estructuraActual.costSubtotal | number: '1.2-2'}}</p>
+      </div>
+      <div class="row">
+        <p class="p1">Costo total:</p>
+        <p class="m1">{{estructuraActual.costoTotal | number: '1.2-2'}}</p>
+      </div>
+      <div class="row">
+        <p class="p1">Valor de venta:</p>
+        <p class="m1">{{estructuraActual.precioNoIgv | number: '1.2-2'}}</p>
+      </div>
+      <div class="row">
+        <p class="p1">IGV:</p>
+        <p class="m1">{{estructuraActual.precioNoIgv * estructuraActual.igv /100 | number: '1.2-2'}}</p>
+      </div>
+      <div class="row">
+        <p class="p1">Precio de venta:</p>
+        <p class="m1">{{estructuraActual.precioIgv | number: '1.2-2'}}</p>
+      </div>
+      <div class="divider-resumen"></div>
+      <div class="row">
+        <p class="p1">P.U-NO INCL. IGV:</p>
+        <p class="m2">{{estructuraActual.precioNoIgv | number: '1.2-2'}}</p>
+      </div>
+      <div class="row" style="margin-bottom: 0;">
+        <p class="p1">P.U-INCL. IGV:</p>
+        <p class="m2">{{estructuraActual.precioIgv | number: '1.2-2'}}</p>
+      </div>
+    </div>
+    <div [ngClass]="estructuraActual.id!=0 ? 'btn-sideSection-enabled':'btn-sideSection-disabled'" (click)="onVerDetalles()">
+      <p>Detalles</p>
+    </div>
+    <div class="resumen-header">
+      <h3>Archivo</h3>
+    </div>
+    <div class="resumen-body">
+      <p>{{ archivoEstructura.nombre }}</p>
+    </div>
+    <div [ngClass]="estructuraActual.id!=0 ? 'btn-sideSection-enabled':'btn-sideSection-disabled'" (click)="onDescargar()">
+      <p>Descargar</p>
+    </div>
+    <div class="resumen-header">
+      <h3>Cotización</h3>
+    </div>
+    <div class="resumen-body">
+      <p *ngIf="cotizacionActual.id == 0">No se ha generado cotización aún</p>
+      <p *ngIf="cotizacionActual.id != 0">{{ cotizacionActual.nombre }}</p>
+    </div>
+    <div [ngClass]="estructuraActual.estado == 'Estructura de costo aprobada' ? 'btn-sideSection-enabled':'btn-sideSection-disabled'" (click)="onGenerarCotizacion()">
+      <p>Generar</p>
+    </div>
+    <div class="resumen-header">
+      <h3>Estado</h3>
+    </div>
+    <div class="resumen-body">
+      <p>{{estructuraActual.estado}}</p>
+    </div>
+    <div [ngClass]="estructuraActual.id!=0 && estructuraActual.estado == 'Pendiente de inicio de revisión' ? 'btn-sideSection-enabled':'btn-sideSection-disabled'" (click)="onEnviarRevision()" >
+      <p>Enviar</p>
+    </div>
+  </div>
+</div>
+<div class="modal-revision" *ngIf="modalRevision">
+  <div class="form-header">
+    <h3> Revisión </h3>
+    <mat-icon (click)="onCloseRevisarEstructura()">cancel</mat-icon>
+  </div>
+  <form [formGroup]="revisionForm">
+    <div class="input-group">
+      <label for="email">Observación</label>
+      <textarea type="text" id="email" formControlName="observacion" autocomplete="off"></textarea>
+    </div>
+    <div class="row-flex">
+      <button class="cancelarBtn" (click)="onObservar()">Observar</button>
+      <button class="guardarBtn"  (click)="onAprobar()">Aprobar</button>
+    </div>
+  </form>
+</div>
+<div class="modal-revisiones" *ngIf="modalRevisiones">
+  <app-estructura-revision [estructura]="estructuraActual" (modalRevisiones)="cerrarModalRevisiones($event)"></app-estructura-revision>
+</div>

@@ -1,0 +1,94 @@
+.main-cont{
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../../../assets/img/Background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+.container-body{
+  width: 100vw;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding: 0 0 0 2.5vw;
+}
+.navbar{
+  margin: 2.5vw 0;
+  width: 200px;
+}
+.container{
+  width: calc(100% - 200px);
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.container::-webkit-scrollbar{
+  display: none;
+}
+.modal-container{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(33, 33, 33, 0.7);
+  z-index: 2;
+}
+.loader{
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: 300;
+}
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: var(--white-color);
+}
+::ng-deep .mat-progress-bar-buffer {
+  background: var(--orange-color);
+}
+.snackbar-cont{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 48px;
+  min-width: 344px;
+  max-width: 33vw;
+  padding: 14px 16px;
+  background-color: var(--black-color);
+  color: var(--gray-secondary-color);
+  box-shadow: 0 0 4px .2px rgba(33, 33, 33, 0.5);
+  z-index: 300;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+
+  span{
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .ok-btn{
+    width: 22%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--green-color);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .error-btn{
+    width: 22%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--red-color);
+    font-size: 15px;
+    font-weight: 600;
+    cursor:  pointer;
+  }
+}

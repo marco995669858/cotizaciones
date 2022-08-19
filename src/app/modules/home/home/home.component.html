@@ -1,0 +1,34 @@
+<div class="modules-container">
+  <div class="module">
+    <img src="assets/img/estructura.png" alt="">
+    <div class="module-description">
+      <h3>Estructura de Costos</h3>
+      <p>En este módulo se podrán observar, crear y revisar cotizaciones correspondientes a la empresa.</p>
+      <button (click)="onEstructura()">Ingresar</button>
+    </div>
+  </div>
+  <div class="module">
+    <img src="assets/img/cotizacion.png" alt="">
+    <div class="module-description">
+      <h3>Cotizaciones</h3>
+      <p>En este módulo se podrán observar, crear y revisar cotizaciones correspondientes a la empresa.</p>
+      <button (click)="onCotizaciones()">Ingresar</button>
+    </div>
+  </div>
+  <div class="module">
+    <img src="assets/img/estadistica.png" alt="">
+    <div class="module-description">
+      <h3>Estadísticas</h3>
+      <p>En este módulo se podrán actualizar el estado de las  cotizaciones realizadas.</p>
+      <button (click)="onFlujos()">Ingresar</button>
+    </div>
+  </div>
+  <div class="module" *ngIf="usuarioSession.fkRol.nombre == 'Administrador'">
+    <img src="assets/img/administracion.png" alt="">
+    <div class="module-description">
+      <h3>Administración</h3>
+      <p>En este módulo se podrá administrar las diferentes entidades de la plataforma. </p>
+      <button (click)="onAdministracion()">Ingresar</button>
+    </div>
+  </div>
+</div>
